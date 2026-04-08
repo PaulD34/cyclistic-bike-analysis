@@ -28,13 +28,12 @@ Data sourced from Divvy bike-share trip data (public dataset).
   - Ride more on weekends (+49%)
   - Take longer trips (1356 sec vs 740 sec)
   - Ride more in warmer months (+368%)
+  - Take ~83% longer trips on average than members
 
 - **Annual members**:
   - Ride more on weekdays (+31%)
   - Take shorter trips
   - Show consistent usage year-round
-
-- Casual riders take ~83% longer trips on average than members
 
 - **Rideable type**:
   - Minimal difference (<3%) between groups
