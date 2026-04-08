@@ -1,12 +1,12 @@
--- File 02_analysis.sql
+-- File: 02_analysis.sql
 -- Purpose: Analyze ride patterns between casual riders and annual members
 
--- ======================
--- ANALYSIS
--- ======================
+-- ========================================
+-- 1. Rideable Type Analysis
+-- ========================================
 
--- Analyze the ride length, ride count and percent of people using electric or classic rideables
-CREATE TABLE `cyclistic-capstone-492221.Cyclistic_Data_2025.tripdata_2025_ride_type` AS
+-- Analyze ride count, average ride length, and share of rides by rideable type
+CREATE OR REPLACE TABLE `cyclistic-capstone-492221.Cyclistic_Data_2025.tripdata_2025_ride_type` AS
 SELECT
   member_casual,
   rideable_type,
@@ -20,8 +20,12 @@ FROM `cyclistic-capstone-492221.Cyclistic_Data_2025.tripdata_2025_clean_filtered
 GROUP BY member_casual, rideable_type
 ORDER BY member_casual, ride_count DESC;
 
--- Analyze ride length and count by month
-CREATE TABLE `cyclistic-capstone-492221.Cyclistic_Data_2025.tripdata_2025_rides_by_month` AS
+-- ========================================
+-- 2. Monthly Ride Analysis
+-- ========================================
+
+-- Analyze ride count and average ride length by month
+CREATE OR REPLACE TABLE `cyclistic-capstone-492221.Cyclistic_Data_2025.tripdata_2025_rides_by_month` AS
 SELECT
   member_casual,
   EXTRACT(MONTH FROM started_at) AS ride_month,
@@ -29,15 +33,20 @@ SELECT
   ROUND(AVG(ride_length_seconds), 2) AS avg_ride_length_seconds
 FROM `cyclistic-capstone-492221.Cyclistic_Data_2025.tripdata_2025_clean_filtered`
 GROUP BY member_casual, ride_month
+ORDER BY member_casual, ride_month;
 
--- Analyze ride length and count by day of the week
+-- ========================================
+-- 3. Day-of-Week Analysis
+-- ========================================
+
+-- Analyze ride count and average ride length by day of week
+CREATE OR REPLACE TABLE `cyclistic-capstone-492221.Cyclistic_Data_2025.tripdata_2025_summary_week_and_count` AS
 SELECT
   member_casual,
   day_of_week_number,
   day_of_week_name,
   COUNT(*) AS ride_count,
-  ROUND(AVG(ride_length_seconds), 2) AS avg_ride_length_seconds,
+  ROUND(AVG(ride_length_seconds), 2) AS avg_ride_length_seconds
 FROM `cyclistic-capstone-492221.Cyclistic_Data_2025.tripdata_2025_clean_filtered`
 GROUP BY member_casual, day_of_week_number, day_of_week_name
-ORDER BY member_casual, day_of_week_number;  
-ORDER BY member_casual, ride_month;
+ORDER BY member_casual, day_of_week_number;
