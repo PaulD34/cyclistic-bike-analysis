@@ -5,7 +5,12 @@ This project analyzes how annual members and casual riders use Cyclistic bikes d
 
 Cyclistic is a fictional company used in the Google Data Analytics case study.
 
-- Processed and analyzed large-scale trip data using SQL in BigQuery
+## Scenario
+In this fictional case study, I am a junior data analyst on the marketing team at Cyclistic, a bike-share company based in Chicago.
+
+The director of marketing believes future growth depends on increasing annual memberships. To support this goal, the team aims to understand how casual riders and annual members use Cyclistic bikes differently.
+
+These insights will be used to develop targeted marketing strategies to convert casual riders into annual members.
 
 ## Business Task
 Identify behavioral differences between casual riders and annual members to inform targeted marketing strategies.
